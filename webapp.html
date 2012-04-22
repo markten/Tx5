@@ -1,0 +1,202 @@
+<!--Yo, me and Mark all up in this bitch-->
+
+<!--
+So Currently I'm thinking that there will start with perhaps 5 menu options for the starting screen:
+
+Quick Match:
+-match up with someone on the internet
+-always 4x4x4 2players infinite time
+-doesn't matter who wins and who loses
+-players 1/2 and x/0 icons
+
+Home Game:
+-Play on your computer
+-Customizable settings
+-players 1/2/3/4 and icons x/o/mark/mark
+
+Sign in:
+-Sign in to get more options
+-Your icon and name
+-Your contacts
+-Ladder
+-Whatnot
+
+Help:
+-Learn the game through my attempted explanation
+-tutorial?
+
+Settings:
+-Who the fuck knows
+-Is this necessary?
+-Maybe we don't need this
+-->
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+
+<script src="./javascript/webapp.js" type="text/javascript" language="javascript"></script>
+<script src="./javascript/gameoptions.js" type="text/javascript" language="javascript"></script>
+<script src="./javascript/game.js" type="text/javascript" language="javascript"></script>
+
+<style rel="stylesheet" type="text/css">
+	#mainbody {cursor: pointer; position: absolute; height: 480px; width: 360px; background: url('images/mainback.png'); left: 50%; margin-left: -240px; overflow: hidden;}
+	#title {position: absolute; height: 39px; width: 357px; background-color:#891c17; border: 2px solid;}
+	
+	#menu {position: absolute; height: 440px; width: 360px; top: 40px;}
+		.button {left: 50%; margin-left: -116px; height: 40px; width:232px;  background-color:#891c17; border-left:10px solid #952823; border-top:10px solid #a23530; border-right:10px solid #7c0f0a; border-bottom: 10px solid #700300;}
+		.text { text-align: center; font-family: Arial, Helvetica, sans-serif; color:#000000; font-style: bold; font-size: 28px;}
+		#quick {position:absolute; top: 30px}
+		#hgame {position:absolute; top: 100px}
+		#signin {position:absolute; top: 170px}
+		#helpb {position: absolute; top: 240px}
+		#settings {position:absolute; top: 310px}
+		
+	#gameoptions {position:absolute;  height: 440px; width: 357px; top: 38px; left: 500px;}
+		.dropdown {position:relative; width: 96px; height: 27px; font-family: Arial, Helvetica, sans-serif; color:#000000; font-size: 22px; border: 2px solid; background-color:#891c17; text-align: center;}
+		.dropwindow { overflow: hidden; height: 30px; width: 120px; }
+		.nmove {position:absolute; top: 0px; }
+		.smallbutton {height: 32px; width:136px;  background-color:#891c17; border-left:10px solid #952823; border-top:8px solid #a23530; border-right:10px solid #7c0f0a; border-bottom: 8px solid #700300;}
+		#start {position:absolute; top:390px; left: 180px; }
+		#back {position:absolute; top:390px; left: 20px; }
+			#playern {position:absolute; top: 20px; left: 16px; z-index: 100}
+			#boardn {position:absolute; top: 20px; left: 130px; z-index: 100}
+			#timen {position:absolute; top: 20px; left: 244px; z-index: 100}
+		#playerbranch {position: absolute; top: 100px; left: 2px;  height: 280px; width: 750px;}
+			.pbox {margin: 8px; float: left; height: 252px; width: 160; border: 2px solid #000000; background-color:#891c17;}
+				.pbox2 {margin: 8px; float: left; height: 126px; width: 160; border: 2px solid #000000; background-color:#891c17;}
+			.playertitle {text-align: center; font-family: Arial, Helvetica, sans-serif; color:#000000; font-style: bold; font-size: 16px;}
+			.icon {position: relative; left: 38px; margin: 20px; height: 48px; width: 48px}
+				.icon2 {position: relative; left: 60px; margin: 4px; height: 24px; width: 24px}
+			.timeo {position: relative; visibility: hidden; height: 60px; margin-top: 8px; width: 120px; left: 20px; }
+			.timebox {position: relative;}
+			.check {float: left; height: 16px; width: 14px; text-align: center; margin: 5px; border-left:4px solid #952823; border-top:4px solid #a23530; border-right:4px solid #7c0f0a; border-bottom: 4px solid #700300;}
+				.check2 {float: left; visibility: hidden; height: 16px; width: 14px; text-align: center; margin: 5px; border-left:4px solid #952823; border-top:4px solid #a23530; border-right:4px solid #7c0f0a; border-bottom: 4px solid #700300;}
+				.check3 {float: left;height: 16px; width: 14px; text-align: center; margin: 5px; border: 4px solid #891c17;}
+			.checkbar {position: relative; top: 26px;}
+	
+	#Game {position:absolute; height: 440px; width: 357px; top: 38px; left: 500px; background-color:#891c17; border: 2px solid #000000;}
+		#playerturn {position: absolute; height: 40px; width: 120px; margin: 6px; left: 20px; }
+		#playertime {position: absolute; height: 40px; width: 120px; margin: 6px; left: 200px; }
+		#gameboard {position: absolute; height: 320px; width: 320px; margin:20px; top: 30px;  background: url('images/board.png');}
+			.blanks {position: absolute; height: 28px; width: 28px; border-radius: 4px ;}
+		#gamexit {position:absolute; top:388px; left: 20px; }
+	
+	#Help {position:absolute; height: 440px; width: 360px; top: 42px; left: 500px; background-color:#891c17;}
+		#helpbar { position:absolute; height: 416; width: 1200px; top: 24px;}
+			.helpbox { position: absolute; height: 130px; width: 320px; margin: 20px; background-color:#7c0f0a; font-size: 18px; font-family:Courier New; text-align: center; border: 2px solid #000000}
+			#hpic1 {position: absolute; height: 160px; width: 160px; margin-top: 170px; margin-left: 100px;}
+			#hbox2 {left: 400px; height: 170px;}
+		#hback {position:absolute; top:388px; left: 20px; }
+		#hnext {position:absolute; top:388px; left: 180px; }
+	</style>
+</head>
+
+
+<body onmouseup="bevelup()">
+<div id='mainbody' >
+	<!--main title section-->
+	<div id="title"><div class="text"><strong>Tic-Tac-Tie-Too-To</strong></div></div>
+	<!--start menu-->
+	<div id="menu" >
+		<div id="quick" class="button" onmousedown="beveldown('quick')" onmouseup=""><div class="text"><strong>Quick Match</strong></div></div>
+		<div id="hgame" class="button" onmousedown="beveldown('hgame')" onmouseup="gameostart()"><div class="text"><strong>Home Game</strong></div></div>
+		<div id="signin" class="button" onmousedown="beveldown('signin')" onmouseup=""><div class="text"><strong>Sign in</strong></div></div>
+		<div id="helpb" class="button" onmousedown="beveldown('helpb')" onmouseup="helpstart()"><div class="text"><strong>Help</strong></div></div>
+		<div id="settings" class="button" onmousedown="beveldown('settings')" onmouseup=""><div class="text"><strong>Settings</strong></div></div>
+	</div>
+	<!--game options for starting a game-->
+	<div id="gameoptions">
+		<div id="playern" class="dropwindow">
+			<div id="playernmove" class="nmove">
+				<div id="2players" class="dropdown" onclick="Ppick(2)">2 Players</div>
+				<div id="3players" class="dropdown" onclick="Ppick(3)">3 Players</div>
+				<div id="4players" class="dropdown" onclick="Ppick(4)">4 Players</div>
+			</div>
+		</div>
+		<div id="boardn" class="dropwindow">
+			<div id="boardnmove" class="nmove">
+				<div id="4board" class="dropdown" onclick="Bpick(4)">4X4X4</div>
+				<div id="5board" class="dropdown" onclick="Bpick(5)">5X5X5</div>
+			</div>
+		</div>
+		<div id="timen" class="dropwindow">
+			<div id="timenmove" class="nmove">
+				<div id="infinity" class="dropdown" onclick="Tpick(0)">Infinity</div>
+				<div id="1 minute" class="dropdown" onclick="Tpick(1)">1:00</div>
+				<div id="2 minutes" class="dropdown" onclick="Tpick(2)">2:00</div>
+				<div id="5 minutes" class="dropdown" onclick="Tpick(3)">5:00</div>
+				<div id="Custom" class="dropdown" onclick="Tpick(4)">Custom</div>
+			</div>
+		</div>
+		<div id="playerbranch">
+		
+			<div class="pbox" id="player1box">
+				<div id="ptitle1" class="text"><strong>Player 1</strong></div>
+				<img class="icon" id="picon1" src="images/X.png"></img>
+				<div id="timeo1" class="timeo"><div id="timetext1"> Input the time in seconds:</div>
+					<input type="text" class="timebox" size="10" id="p1time"></input>s
+				</div>
+				<div id="checkbar1" class="checkbar">
+					<div id="p1check1" class="check" onclick="order(1,1)" >1</div><div id="p1check2" class="check" onclick="order(1,2)" >2</div><div id="p1check3" class="check2" onclick="order(1,3)" >3</div><div id="p1check4" class="check2" onclick="order(1,4)" >4</div><div id="p1check0" class="check3" onclick="order(1,0)" >R</div>
+				</div>
+			</div>
+			
+			<div class="pbox" id="player2box">
+				<div id="ptitle2" class="text"><strong>Player 2</strong></div>
+				<img class="icon" id="picon2" src="images/O.png"></img>
+				<div id="timeo2" class="timeo"><div id="timetext2"> Input the time in seconds:</div>
+					<input type="text" class="timebox" size="10" id="p2time"></input>s
+				</div>
+				<div id="checkbar2" class="checkbar">
+					<div id="p2check1" class="check" onclick="order(2,1)" >1</div><div id="p2check2" class="check" onclick="order(2,2)" >2</div><div id="p2check3" class="check2" onclick="order(2,3)" >3</div><div id="p2check4" class="check2" onclick="order(2,4)" >4</div><div id="p2check0" class="check3" onclick="order(2,0)" >R</div>
+				</div>
+			</div>
+			
+			<div class="pbox" id="player3box">
+				<div id="ptitle3" class="text"><strong>Player 3</strong></div>
+				<img class="icon" id="picon3" src="images/X.png"></img>
+				<div id="timeo3" class="timeo"><div id="timetext3"> Input the time in seconds:</div>
+					<input type="text" class="timebox" size="10" id="p3time"></input>s
+				</div>
+				<div id="checkbar3" class="checkbar">
+					<div id="p3check1" class="check" onclick="order(3,1)" >1</div><div id="p3check2" class="check" onclick="order(3,2)" >2</div><div id="p3check3" class="check2" onclick="order(3,3)" >3</div><div id="p3check4" class="check2" onclick="order(3,4)" >4</div><div id="p3check0" class="check3" onclick="order(3,0)" >R</div>
+				</div>
+			</div>
+			
+			<div class="pbox" id="player4box">
+				<div id="ptitle4" class="text"><strong>Player 4</strong></div>
+				<img class="icon" id="picon4" src="images/O.png"></img>
+				<div id="timeo4" class="timeo"><div id="timetext4"> Input the time in seconds:</div>
+					<input type="text" class="timebox" size="10" id="p4time"></input>s
+				</div>
+				<div id="checkbar4" class="checkbar">
+					<div id="p4check1" class="check" onclick="order(4,1)" >1</div><div id="p4check2" class="check" onclick="order(4,2)" >2</div><div id="p4check3" class="check2" onclick="order(4,3)" >3</div><div id="p4check4" class="check2" onclick="order(4,4)" >4</div><div id="p4check0" class="check3" onclick="order(4,0)" >R</div>
+				</div>
+			</div>
+			
+		</div>
+		<!--buttons-->
+		<div id="back" class="smallbutton" onmousedown="beveldown('back')" onmouseup="mainpage()"><div class="text"><strong>Back</div></div>
+		<div id="start" class="smallbutton" onmousedown="beveldown('start')" onmouseup="Gamestart()"><div class="text"><strong>Start</div></div>
+	</div>
+
+	<div id="Game">
+		<div id="playerturn">Player</div>
+		<div id="playertime">Infinite Time</div>
+		<div id="gameboard"></div>
+		<div id="gamexit" class="smallbutton" onmousedown="beveldown('gamexit')" onmouseup="mainpage()"><div class="text"><strong>Exit</div></div>
+	</div>
+	
+	<div id="Help">
+		<div class="text">Help Section</div>
+		<div id="helpbar">
+			<div id="hbox1" class="helpbox">The basic idea for Tic-Tac-Tie-Too-To is that it's a three-dimensional Tic-Tac-To game with a length of 4 needed to win in any direction.</div>
+			<img id="hpic1" src="images/box.png"/>
+			<div id="hbox2" class="helpbox">Each of the sixteen boxes represents a row running depthwise into the screen. With the topleft sqare of each box representing the foremost block, moving clockwise in the box corresponds to moving deeper into the screen. This makes the bottom left block the deepest.</div>
+		</div>
+		<div id="hback" class="smallbutton" onmousedown="beveldown('hback')" onmouseup="mainpage()"><div class="text"><strong>Exit</div></div>
+		<div id="hnext" class="smallbutton" onmousedown="beveldown('hnext')" onmouseup="NextHelp()"><div class="text"><strong>Next</div></div>
+	</div>
+</div>
+</body>
+</html>
